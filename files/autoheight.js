@@ -6,11 +6,11 @@
   var currentHeight;
 
   function publishHeight() {
-    var height = document.body.offsetHeight;
+    var height = document.documentElement.offsetHeight;
     if (currentHeight === height) return;
     currentHeight = height;
 
-    window.parent.postMessage({height: currentHeight}, "*");
+    window.parent.postMessage({height: currentHeight, name: window.name}, "*");
   }
 
   function autoPublish() {
