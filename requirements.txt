@@ -1,0 +1,5 @@
+facebook-sdk == 1.0.0
+requests
+arrow
+Jinja2
+
