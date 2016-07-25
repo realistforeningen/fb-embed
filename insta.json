@@ -1,8 +1,8 @@
 {
-  "name": "rf-embed-fb-event",
-  "description": "Shows the latest RF event from Facebook",
+  "name": "rf-embed-insta",
+  "description": "Shows the latest RF photo from Instagram",
   "region": "eu-west-1",
-  "handler": "event.aws_func",
+  "handler": "insta.aws_func",
   "role": "arn:aws:iam::506963589453:role/lambda_basic_execution",
   "ignore": [
     ".git",

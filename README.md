@@ -1,7 +1,7 @@
-# fb-embed
+# embed
 
 This is a project which builds embeddable iframes which presents data
-from Facebook. It's designed to work as a library or run within AWS
+from Facebook/Instagram. It's designed to work as a library or run within AWS
 Lambda.
 
 ## Getting started
@@ -20,6 +20,7 @@ Create a `config.py`:
 ACCESS_TOKEN = '...'
 
 EVENT_PAGE = 'realistforeningen'
+INSTAGRAM_USER = 'rf_uio'
 ```
 
 See the generated HTML:
