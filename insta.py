@@ -1,6 +1,7 @@
 import requests
 import re
 
+import renderer
 import config
 
 CODE_RE = re.compile('"code":\s*"([^"]+)"')
@@ -22,6 +23,7 @@ def get_embed_code(code):
 def aws_func(event, context):
     code = get_latest_image_code()
     html = get_embed_code(code)
+    html += "<script>" + renderer.files['autoheight.js'] + "</script>"
     return {'html': html}
 
 if __name__ == '__main__':
