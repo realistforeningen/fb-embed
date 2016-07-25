@@ -13,7 +13,7 @@
     </div>
     <div class="desc">
       <div class="desc»name">
-        <a href="{{ event.url }}">{{ event.name }}</a>
+        <a href="{{ event.url }}" target="_top">{{ event.name }}</a>
       </div>
       <div class="desc»time">
         {{ event.start_time.format("ddd H:mm") }}
@@ -29,7 +29,7 @@
   </div>
   <div class="picture">
     <img src="{{ event.picture_url }}">
-    <a href="{{ event.url }}"></a>
+    <a href="{{ event.url }}" target="_top"></a>
   </div>
 </div>
 </body>
