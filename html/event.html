@@ -5,7 +5,7 @@
   <style>{{ files['main.css']|safe }}</style>
 </head>
 <body>
-<div class="event">
+{% macro event_title(event) %}
   <div class="title">
     <div class="date">
       <div class="date»mon">{{ event.start_time.format("MMM") }}</div>
@@ -27,11 +27,20 @@
     <div class="join">
     </div>
   </div>
+{% endmacro %}
+<div class="event">
+  {{ event_title(event=main_event) }}
   <div class="picture">
-    <img src="{{ event.picture_url }}">
-    <a href="{{ event.url }}" target="_top"></a>
+    <img src="{{ main_event.picture_url }}">
+    <a href="{{ main_event.url }}" target="_top"></a>
   </div>
 </div>
+{% for event in rest_events %}
+<div class="event">
+  {{ event_title(event=event) }}
+  <div class="empty"></div>
+</div>
+{% endfor %}
 <script>{{ files['autoheight.js']|safe }}</script>
 </body>
 </html>
