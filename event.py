@@ -51,8 +51,13 @@ def aws_func(event, context):
     events = [Event(data) for data in get_latest_events_raw()]
     events = filter(lambda e: e.is_active(), events)
     events = events[::-1]
-    main_event = events.pop(0)
-    main_event.fetch_full_picture()
+
+    if len(events) > 0:
+        main_event = events.pop(0)
+        main_event.fetch_full_picture()
+    else:
+        main_event = None
+
     html = render('event.html', main_event=main_event, rest_events=events)
     return {'html': html}
 

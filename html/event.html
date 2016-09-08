@@ -28,6 +28,7 @@
     </div>
   </div>
 {% endmacro %}
+{% if main_event %}
 <div class="event">
   {{ event_title(event=main_event) }}
   <div class="picture">
@@ -35,6 +36,7 @@
     <a href="{{ main_event.url }}" target="_top"></a>
   </div>
 </div>
+{% endif %}
 {% for event in rest_events %}
 <div class="event">
   {{ event_title(event=event) }}
