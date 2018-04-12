@@ -17,7 +17,7 @@ def get_latest_events_raw():
     )['data']
 
 
-EVENT_PICTURE_RE = re.compile('coverPhotoImg(.*?)src="([^"]+)')
+EVENT_PICTURE_RE = re.compile('scaledImageFitHeight(.*?)src="([^"]+)')
 
 def get_full_event_picture(url):
     res = requests.get(url)
