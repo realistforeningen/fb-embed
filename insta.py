@@ -4,7 +4,7 @@ import re
 import renderer
 import config
 
-CODE_RE = re.compile('"code":\s*"([^"]+)"')
+CODE_RE = re.compile('"shortcode":\s*"([^"]+)"')
 
 def get_latest_image_code():
     url = 'https://www.instagram.com/' + config.INSTAGRAM_USER
