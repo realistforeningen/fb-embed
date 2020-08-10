@@ -1,4 +1,4 @@
-facebook-sdk == 1.0.0
+facebook-sdk == 3.1.0
 requests
 arrow
 Jinja2

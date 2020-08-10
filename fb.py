@@ -1,4 +1,5 @@
 from facebook import GraphAPI
+from http.server import BaseHTTPRequestHandler
 import requests
 import arrow
 import re
@@ -7,7 +8,7 @@ from renderer import render
 
 import config
 
-graph = GraphAPI(access_token=config.ACCESS_TOKEN, version="2.5")
+graph = GraphAPI(access_token=config.FACEBOOK_ACCESS_TOKEN, version="3.1")
 
 def get_latest_events_raw():
     id = config.EVENT_PAGE + "/events"
@@ -47,7 +48,7 @@ class Event(object):
         else:
             return self.start_time > arrow.now()
 
-def aws_func(event, context):
+def fetch_and_render():
     events = [Event(data) for data in get_latest_events_raw()]
     events = filter(lambda e: e.is_active(), events)
     events = events[::-1]
@@ -58,9 +59,16 @@ def aws_func(event, context):
     else:
         main_event = None
 
-    html = render('event.html', main_event=main_event, rest_events=events)
-    return {'html': html}
+    return render('event.html', main_event=main_event, rest_events=events)
+
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.send_header('Cache-control', 's-maxage=600, stale-while-revalidate')
+        self.end_headers()
+        self.wfile.write(fetch_and_render.encode())
 
 if __name__ == '__main__':
-    print aws_func(None, None)['html']
+    print(fetch_and_render())
 
