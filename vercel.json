@@ -2,5 +2,8 @@
   "routes": [
     { "src": "/insta", "dest": "/insta.py"},
     { "src": "/fb", "dest": "/fb.py"}
+  ],
+  "builds": [
+    { "src": "*.py", "use": "@vercel/python" }
   ]
 }
