@@ -67,7 +67,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.send_header('Cache-control', 's-maxage=600, stale-while-revalidate')
         self.end_headers()
-        self.wfile.write(fetch_and_render.encode())
+        self.wfile.write(fetch_and_render().encode())
 
 if __name__ == '__main__':
     print(fetch_and_render())
